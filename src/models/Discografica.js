@@ -1,28 +1,27 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-const Artista = sequelize.define(
-  'Artista',
+const Discografica = sequelize.define(
+  'Discografica',
   {
-    id_artista: {
+    id_discografica: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
     },
     nombre: {
       type: DataTypes.STRING(100),
-      unique: true,
       allowNull: false,
     },
-    imagen_url: {
-      type: DataTypes.STRING(255),
-      defaultValue: 'default_artist.jpg',
+    id_pais: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
   },
   {
-    tableName: 'artistas',
+    tableName: 'discograficas',
     timestamps: false,
   }
 );
 
-module.exports = Artista;
+module.exports = Discografica;

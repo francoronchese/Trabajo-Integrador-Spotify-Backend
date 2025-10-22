@@ -4,6 +4,16 @@
 @json = application/json
 
 ### ==========================
+### PRUEBAS RUTA 404
+### ==========================
+
+### Ruta con /api/v1 que NO existe - debería dar 404
+GET {{baseUrl}}/ruta-inexistente
+
+### Ruta sin /api/v1 que NO existe - debería dar 404
+GET http://localhost:3000/ruta-inexistente
+
+### ==========================
 ### USUARIOS
 ### ==========================
 # Crear usuario (OK)

@@ -1,22 +1,20 @@
-/**
- * Configuración principal de la aplicación Express
- * Los estudiantes deben completar la configuración de middlewares y rutas
- */
-
-const express = require("express");
-
-// TODO: Importar las rutas
+const express = require('express');
+const allRoutes = require('./routes/index')
+const notFoundRoute = require('./routes/notFoundRoute');
+const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
 
-// TODO: Configurar parseo de JSON
-// Ejemplo: app.use(express.json());
+// Parseo de JSON
+app.use(express.json());
 
-// TODO: Configurar rutas
-// Ejemplo: app.use('/api/v1/usuarios', usuariosRoutes);
+// Rutas
+app.use('/api/v1/usuarios', allRoutes);
 
-// TODO: Configurar middleware de manejo de errores (debe ir al final)
+// Ruta 404
+app.use(notFoundRoute);
 
-// TODO: Configurar ruta 404
+// Middleware de manejo de errores no manejados anteriormente
+app.use(errorHandler);
 
 module.exports = app;
